@@ -17,6 +17,21 @@ class TestBasics(unittest.TestCase):
     def test_divide(self):
         result = rpn.calculate('6 2 /')
         self.assertEqual(3, result)
+    def test_factorial(self):
+        result = rpn.calculate('4 !')
+        self.assertEqual(24, result)
+    def test_summation(self):
+        result = rpn.calculate('1 2 3 4 5 ?')
+        self.assertEqual(15, result)
+    def test_and(self):
+        result = rpn.calculate('5 3 &')
+        self.assertEqual(1, result)
+    def test_or(self):
+        result = rpn.calculate('5 2 |')
+        self.assertEqual(7, result)
+    def test_not(self):
+        result = rpn.calculate('60 ~')
+        self.assertEqual(-61, result)
     def test_toomany(self):
         with self.assertRaises(TypeError):
             result = rpn.calculate('1 2 3 +')
